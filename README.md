@@ -19,3 +19,19 @@ A mock function:
 1. Records how many times it was called
 2. Records the arguments it was called with
 3. Used when we want to make sure that a component calls a callback (function props)
+
+## Select any element on the screen
+
+### 1. ARIA roles
+
+### 2. Testing Playground
+
+If you don't know the ARIA role associated with the element you want to select for testing, you can use the handful tool `screen.logTestingPlaygroundURL()` and it will print the HTML content in an encoded format so you can see the ARIA roles associated with each rendered element on the screen.
+
+### 3. data-testid
+
+You can use a special attribute called `data-testid` and pass it a unique value and select that `testid` in your test file and do you testing on it.
+
+### 4. Query Selectors
+
+Finally, if you want a direct approach, you can use query selectors if you don't wish to add extra attributes to your components only for the sake of testing. When you render a component on the screen using the `render` method, you get an object with different properties, and one of them is the `container`. That container wraps your entire component so you can use it to select elements inside it.
