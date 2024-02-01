@@ -28,6 +28,7 @@ test("findBy/findAllBy are used during data fetching", async () => {
   render(<AsyncUsersList />);
 
   const names = await screen.findAllByRole("listitem");
+  //   const namess = screen.queryAllByRole("listitem"); // does not wait for the promise to be resolved
 
   expect(names).toHaveLength(2);
 });
