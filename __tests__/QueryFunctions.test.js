@@ -7,7 +7,7 @@ test("getBy/getAllBy to prove an element exists on the screen", () => {
   render(<UserForm onUserAdd={() => {}} />);
 
   const nameField = screen.getByRole("textbox", {
-    name: /name/i,
+    name: /email/i,
   });
 
   expect(nameField).toBeInTheDocument();
@@ -27,7 +27,7 @@ test("findBy/findAllBy are used during data fetching", async () => {
   render(<AsyncUsersList />);
 
   const names = await screen.findAllByRole("listitem");
-  //   const namess = screen.queryAllByRole("listitem"); // does not wait for the promise to be resolved
+  //   const namess = await screen.queryAllByRole("listitem"); // does not await for the promise to be resolved
 
   expect(names).toHaveLength(2);
 });
