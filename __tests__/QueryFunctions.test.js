@@ -1,13 +1,12 @@
 import { render, screen } from "@testing-library/react";
 
 import UserForm from "../src/components/UserForm";
-import UserList from "../src/components/UserList";
 import AsyncUsersList from "../src/components/AsynUsersList";
 
 test("getBy/getAllBy to prove an element exists on the screen", () => {
   render(<UserForm onUserAdd={() => {}} />);
 
-  const nameField = screen.queryByRole("textbox", {
+  const nameField = screen.getByRole("textbox", {
     name: /name/i,
   });
 
