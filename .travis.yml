@@ -1,4 +1,4 @@
-sudo: required
+language: javascript
 
 services:
   - docker
@@ -7,4 +7,4 @@ before_install:
   - docker build -f Dockerfile.dev -t markmaksi/testing-series .
 
 script:
-  - docker run -e CI=true markmaksi/testing-series npm run test 
+  - docker run markmaksi/testing-series npm run test 
