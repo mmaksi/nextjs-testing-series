@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run markmaksi/testing-series npm run test 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1" # Your AWS region
+  app: "frontend" # Your Elastic Beanstalk Application Name
+  env: "frontend-env" # Your Elastic Beanstalk Environment Name
+  bucket_name: "elasticbeanstalk-eu-central-1-580978446433" # The S3 bucket for your application
+  bucket_path: "frontend" # Path within your S3 bucket
+  on:
+    branch: main # or any branch from which you want to deploy
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
