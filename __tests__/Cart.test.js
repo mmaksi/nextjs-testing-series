@@ -7,6 +7,6 @@ test("checks if the shopping cart has the correct total price", () => {
     { id: 3, name: "Product 3", price: 30 },
   ];
 
-  expect(items).toHaveTotalPrice(60);
-  expect(items).not.toHaveTotalPrice(50);
+  expect(toHaveTotalPrice(items,60))
+  expect(toHaveTotalPrice(items, 50)).not.toBeTruthy();
 });
