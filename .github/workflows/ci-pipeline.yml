@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run npm test
-        run: npm test
+        run: npm run test
 
   build:
     name: Build and Test
@@ -27,4 +27,4 @@ jobs:
       - name: Build Docker image in Dev Mode
         run: docker build -t markmaksi/testing-series -f Dockerfile.dev .
       - name: Run tests in the container
-        run: docker run markmaksi/testing-series npm test
+        run: docker run markmaksi/testing-series npm run test
