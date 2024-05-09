@@ -24,5 +24,6 @@ jobs:
           application_name: next-docker-app
           environment_name: Next-docker-app-env
           region: eu-central-1
+
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
