@@ -1,4 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { toContainOnlyLetters } from "../src/utils/customMatchers";
+
+import { fireEvent, render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 
 import UserForm from "../src/components/UserForm";
@@ -40,4 +42,25 @@ test("it calls the onUserAdd function with proper arguments upon form submission
     name: "jane",
     email: "jane@test.com",
   });
+});
+
+test("input fields have correct string format", async () => {
+  // Render the component
+  render(<UserForm onUserAdd={() => {}} />);
+  // Fire change event on the name input field
+  const nameField = screen.getByRole("textbox", {
+    name: /name/i,
+  });
+  // Typing a valid string
+  fireEvent.change(nameField, { target: { value: "John Doe" } });
+  const validInput = nameField.value;
+  // Clearing the input field
+  fireEvent.change(nameField, { target: { value: "" } });
+  // Typing an invalid string
+  fireEvent.change(nameField, { target: { value: "J0hn Doe@" } });
+  const invalidInput = nameField.value;
+
+  // Check if the input field has weird characters
+  expect(validInput).toContainOnlyLetters();
+  expect(invalidInput).not.toContainOnlyLetters();
 });
